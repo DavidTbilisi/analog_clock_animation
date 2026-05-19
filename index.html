@@ -5,86 +5,81 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Analog Clock Animation</title>
     <style>
-        * {
-            border: 1px dashed rgba(0, 0, 0, 0.449);
-        }
-        .clock {
-            border-radius: 50%;
-            border: 2px solid #333;
-            background-color: antiquewhite;
-            --size: 300px;
-            width: var(--size);
-            height: var(--size);
-            position: relative;
-        }
-        .numbers {
+        body {
             display: flex;
             justify-content: center;
             align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background: #f4ecd8;
+            font-family: system-ui, sans-serif;
+        }
+
+        .clock {
             --size: 300px;
             width: var(--size);
             height: var(--size);
+            border-radius: 50%;
+            border: 4px solid #333;
+            background: antiquewhite;
             position: relative;
         }
 
-        .numbers div{
+        .numbers div {
             position: absolute;
+            font-weight: bold;
+            font-size: 22px;
         }
-        .numbers div:nth-child(1){
-            /* 12 */
-            top: 0;
-        }
+        .numbers div:nth-child(1) { top: 10px;    left: 50%;  transform: translateX(-50%); }
+        .numbers div:nth-child(2) { right: 14px;  top: 50%;   transform: translateY(-50%); }
+        .numbers div:nth-child(3) { bottom: 10px; left: 50%;  transform: translateX(-50%); }
+        .numbers div:nth-child(4) { left: 14px;   top: 50%;   transform: translateY(-50%); }
 
-        .numbers div:nth-child(2){
-            /* 3 */
-            right: 0;
-        }
-
-        .numbers div:nth-child(3){
-            /* 6 */
-            bottom: 0;
-        }
-
-        .numbers div:nth-child(4){
-            /* 9 */
-            left: 0;
-        }
-        
-        .hands{
+        .hand {
             position: absolute;
-            top: 0%;
-            --size: 300px;
-            width: var(--size);
-            height: var(--size);
+            bottom: 50%;
+            left: 50%;
+            transform-origin: 50% 100%;
+            border-radius: 4px;
+            background: #222;
         }
 
-        .hours{
-            background-color: aquamarine;
-            transform-origin: right center;
+        .hours {
+            width: 8px;
+            height: 28%;
+            animation: spin 43200s linear infinite;
+        }
+        .minutes {
+            width: 5px;
+            height: 40%;
+            animation: spin 3600s linear infinite;
+        }
+        .seconds {
+            width: 2px;
+            height: 45%;
+            background: crimson;
+            animation: spin 60s linear infinite;
+        }
+
+        .center {
             position: absolute;
             top: 50%;
-            width: 150px;
-            height: 10px;
-            transform: rotate(90deg);
-            animation: hours 5s linear infinite;
+            left: 50%;
+            width: 14px;
+            height: 14px;
+            background: crimson;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
         }
 
-        .minutes{
-            /* background-color: aquamarine; */
-        }
-
-        .seconds{
-            /* background-color: aquamarine; */
-        }
-
-        @keyframes hours {
-            0% { transform: rotate(90deg) }
-            100% { transform: rotate(450deg) }
+        @keyframes spin {
+            from { transform: translateX(-50%) rotate(0deg); }
+            to   { transform: translateX(-50%) rotate(360deg); }
         }
     </style>
 </head>
 <body>
-    
+
     <div class="clock">
         <div class="numbers">
             <div>12</div>
@@ -93,13 +88,11 @@
             <div>9</div>
         </div>
 
-        <div class="hands">
-            <div class="hours"></div>
-            <div class="minutes"></div>
-            <div class="seconds"></div>
-        </div>
+        <div class="hand hours"></div>
+        <div class="hand minutes"></div>
+        <div class="hand seconds"></div>
+        <div class="center"></div>
     </div>
-
 
 </body>
 </html>
