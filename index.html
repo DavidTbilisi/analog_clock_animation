@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analog Clock Animation</title>
+    <style>
+        * {
+            border: 1px dashed rgba(0, 0, 0, 0.449);
+        }
+        .clock {
+            border-radius: 50%;
+            border: 2px solid #333;
+            background-color: antiquewhite;
+            --size: 300px;
+            width: var(--size);
+            height: var(--size);
+            position: relative;
+        }
+        .numbers {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            --size: 300px;
+            width: var(--size);
+            height: var(--size);
+            position: relative;
+        }
+
+        .numbers div{
+            position: absolute;
+        }
+        .numbers div:nth-child(1){
+            /* 12 */
+            top: 0;
+        }
+
+        .numbers div:nth-child(2){
+            /* 3 */
+            right: 0;
+        }
+
+        .numbers div:nth-child(3){
+            /* 6 */
+            bottom: 0;
+        }
+
+        .numbers div:nth-child(4){
+            /* 9 */
+            left: 0;
+        }
+        
+        .hands{
+            position: absolute;
+            top: 0%;
+            --size: 300px;
+            width: var(--size);
+            height: var(--size);
+        }
+
+        .hours{
+            background-color: aquamarine;
+            transform-origin: right center;
+            position: absolute;
+            top: 50%;
+            width: 150px;
+            height: 10px;
+            transform: rotate(90deg);
+            animation: hours 5s linear infinite;
+        }
+
+        .minutes{
+            /* background-color: aquamarine; */
+        }
+
+        .seconds{
+            /* background-color: aquamarine; */
+        }
+
+        @keyframes hours {
+            0% { transform: rotate(90deg) }
+            100% { transform: rotate(450deg) }
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="clock">
+        <div class="numbers">
+            <div>12</div>
+            <div>3</div>
+            <div>6</div>
+            <div>9</div>
+        </div>
+
+        <div class="hands">
+            <div class="hours"></div>
+            <div class="minutes"></div>
+            <div class="seconds"></div>
+        </div>
+    </div>
+
+
+</body>
+</html>
