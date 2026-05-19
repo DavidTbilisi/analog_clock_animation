@@ -30,6 +30,8 @@
             font-weight: bold;
             font-size: 22px;
         }
+        /* translate(-50%) shifts each number back by half its own size so it sits
+           centered on the 50% axis, instead of starting at it. */
         .numbers div:nth-child(1) { top: 10px;    left: 50%;  transform: translateX(-50%); }
         .numbers div:nth-child(2) { right: 14px;  top: 50%;   transform: translateY(-50%); }
         .numbers div:nth-child(3) { bottom: 10px; left: 50%;  transform: translateX(-50%); }
@@ -69,9 +71,15 @@
             height: 14px;
             background: crimson;
             border-radius: 50%;
+            /* top/left: 50% puts the dot's top-left corner at center;
+               translate(-50%, -50%) shifts it back so its own center lands there. */
             transform: translate(-50%, -50%);
         }
 
+        /* left: 50% on .hand puts the hand's left edge at center; translateX(-50%)
+           shifts it back by half its width so the hand is centered on the pivot.
+           rotate() must be composed in the same transform — otherwise it overrides
+           the translate. */
         @keyframes spin {
             from { transform: translateX(-50%) rotate(0deg); }
             to   { transform: translateX(-50%) rotate(360deg); }
